@@ -19,6 +19,7 @@ public class BaseTest {
     public FileUploadPage fileUploadPage;
     public FileUploadedPage fileUploadedPage;
     public FileDownloadPage fileDownloadPage;
+    public CheckboxesPage checkboxesPage;
 
     @BeforeClass
     public void setUp() {
@@ -31,6 +32,7 @@ public class BaseTest {
         fileUploadPage = new FileUploadPage(driver, wait);
         fileUploadedPage = new FileUploadedPage(driver, wait);
         fileDownloadPage = new FileDownloadPage(driver, wait);
+        checkboxesPage = new CheckboxesPage(driver, wait);
     }
 
     @AfterClass

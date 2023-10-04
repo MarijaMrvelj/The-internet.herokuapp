@@ -119,5 +119,41 @@ public class AvailableExamplesTest extends BaseTest {
         Assert.assertTrue(fileDownloadPage.isFileDownloaded("C:\\Users\\HP\\Downloads\\", fileName));
     }
 
+    @Test
+    public void verifyThatCheckboxesCanBeUnchecked() {
+        homePage.clickOnCheckboxesButton();
+        checkboxesPage.uncheckCheckboxes();
 
+        Assert.assertFalse(checkboxesPage.getCheckbox1().isSelected());
+        Assert.assertFalse(checkboxesPage.getCheckbox2().isSelected());
+    }
+
+    @Test
+    public void verifyThatCheckboxesCanBeCheckedOneByOne() {
+        homePage.clickOnCheckboxesButton();
+        checkboxesPage.uncheckCheckboxes();
+
+        Assert.assertFalse(checkboxesPage.getCheckbox1().isSelected());
+        Assert.assertFalse(checkboxesPage.getCheckbox2().isSelected());
+
+        checkboxesPage.selectOneCheckbox(checkboxesPage.getCheckbox1());
+        checkboxesPage.selectOneCheckbox(checkboxesPage.getCheckbox2());
+
+        Assert.assertTrue(checkboxesPage.getCheckbox1().isSelected());
+        Assert.assertTrue(checkboxesPage.getCheckbox2().isSelected());
+    }
+
+    @Test
+    public void verifyThatCheckboxesCanBeChecked() {
+        homePage.clickOnCheckboxesButton();
+        checkboxesPage.uncheckCheckboxes();
+
+        Assert.assertFalse(checkboxesPage.getCheckbox1().isSelected());
+        Assert.assertFalse(checkboxesPage.getCheckbox2().isSelected());
+
+        checkboxesPage.selectCheckboxes();
+
+        Assert.assertTrue(checkboxesPage.getCheckbox1().isSelected());
+        Assert.assertTrue(checkboxesPage.getCheckbox2().isSelected());
+    }
 }

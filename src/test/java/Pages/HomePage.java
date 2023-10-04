@@ -12,6 +12,7 @@ public class HomePage {
     WebElement addRemoveElementsButton;
     WebElement fileUploadButton;
     WebElement fileDownloadButton;
+    WebElement checkboxesButton;
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -34,6 +35,10 @@ public class HomePage {
         return driver.findElement(By.linkText("File Download"));
     }
 
+    public WebElement getCheckboxesButton() {
+        return driver.findElement(By.linkText("Checkboxes"));
+    }
+
     //---------------
 
     public void clickOnAddRemoveElementsButton() {
@@ -45,5 +50,9 @@ public class HomePage {
     }
     public void clickOnFileDownloadButton() {
         getFileDownloadButton().click();
+    }
+
+    public void clickOnCheckboxesButton() {
+        getCheckboxesButton().click();
     }
 }
