@@ -13,6 +13,7 @@ public class HomePage {
     WebElement fileUploadButton;
     WebElement fileDownloadButton;
     WebElement checkboxesButton;
+    WebElement horizontalSliderButton;
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -39,6 +40,10 @@ public class HomePage {
         return driver.findElement(By.linkText("Checkboxes"));
     }
 
+    public WebElement getHorizontalSliderButton() {
+        return driver.findElement(By.linkText("Horizontal Slider"));
+    }
+
     //---------------
 
     public void clickOnAddRemoveElementsButton() {
@@ -54,5 +59,9 @@ public class HomePage {
 
     public void clickOnCheckboxesButton() {
         getCheckboxesButton().click();
+    }
+
+    public void clickOnHorizontalSliderButton() {
+        getHorizontalSliderButton().click();
     }
 }

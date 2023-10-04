@@ -165,4 +165,40 @@ public class AvailableExamplesTest extends BaseTest {
         Assert.assertTrue(checkboxesPage.getCheckbox1().isSelected());
         Assert.assertTrue(checkboxesPage.getCheckbox2().isSelected());
     }
+
+    @Test
+    public void verifyThatSliderCanBeSlidedToTheRightEnd() {
+        homePage.clickOnHorizontalSliderButton();
+        horizontalSliderPage.slideToTheRight(9);
+
+        Assert.assertEquals(horizontalSliderPage.rangeNumber(), "5");
+    }
+
+    @Test
+    public void verifyThatSliderCanBeSlidedToTheLeftEnd() {
+        homePage.clickOnHorizontalSliderButton();
+        horizontalSliderPage.slideToTheRight(9);
+        Assert.assertEquals(horizontalSliderPage.rangeNumber(), "5");
+
+        horizontalSliderPage.slideToTheLeft(9);
+        Assert.assertEquals(horizontalSliderPage.rangeNumber(), "0");
+    }
+
+    @Test
+    public void verifyThatSliderCanBeSlidedRight() {
+        homePage.clickOnHorizontalSliderButton();
+        horizontalSliderPage.slideToTheRight(5);
+
+        Assert.assertEquals(horizontalSliderPage.rangeNumber(), "3");
+    }
+
+    @Test
+    public void verifyThatSliderCanBeSlidedLeft() {
+        homePage.clickOnHorizontalSliderButton();
+        horizontalSliderPage.slideToTheRight(6);
+        Assert.assertEquals(horizontalSliderPage.rangeNumber(), "3.5");
+
+        horizontalSliderPage.slideToTheLeft(3);
+        Assert.assertEquals(horizontalSliderPage.rangeNumber(), "1.5");
+    }
 }

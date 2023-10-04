@@ -20,6 +20,7 @@ public class BaseTest {
     public FileUploadedPage fileUploadedPage;
     public FileDownloadPage fileDownloadPage;
     public CheckboxesPage checkboxesPage;
+    public HorizontalSliderPage horizontalSliderPage;
 
     @BeforeClass
     public void setUp() {
@@ -33,10 +34,11 @@ public class BaseTest {
         fileUploadedPage = new FileUploadedPage(driver, wait);
         fileDownloadPage = new FileDownloadPage(driver, wait);
         checkboxesPage = new CheckboxesPage(driver, wait);
+        horizontalSliderPage = new HorizontalSliderPage(driver, wait);
     }
 
     @AfterClass
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 }
