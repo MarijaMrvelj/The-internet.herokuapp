@@ -30,6 +30,15 @@ public class AvailableExamplesTest extends BaseTest {
     }
 
     @Test
+    public void verifyThatMultipleElementsCanBeAdded() {
+        homePage.clickOnAddRemoveElementsButton();
+        addRemoveElementsPage.addSpecifiedNumberOfElements(45);
+
+        Assert.assertFalse(addRemoveElementsPage.getDeleteButton().isEmpty());
+        Assert.assertEquals(addRemoveElementsPage.getDeleteButton().size(), addRemoveElementsPage.countElements());
+    }
+
+    @Test
     public void verifyThatElementsCanBeDeleted() {
         homePage.clickOnAddRemoveElementsButton();
         addRemoveElementsPage.addElement();

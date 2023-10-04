@@ -26,8 +26,18 @@ public class AddRemoveElementsPage {
         return driver.findElements(By.className("added-manually"));
     }
 
+    //----------------
+
     public void addElement() {
         getAddElementButton().click();
+    }
+
+    public void addSpecifiedNumberOfElements(int number) {
+        int i = 0;
+        while (i < number) {
+            addElement();
+            i++;
+        }
     }
 
     public void deleteElement(int position) {
