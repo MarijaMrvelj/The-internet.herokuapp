@@ -8,12 +8,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
     public WebDriver driver;
     public WebDriverWait wait;
+    String homePageUrl;
     WebElement addRemoveElementsButton;
     WebElement fileUploadButton;
+    WebElement fileDownloadButton;
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
+    }
+
+    public String getHomePageUrl() {
+        return "https://the-internet.herokuapp.com/";
     }
 
     public WebElement getAddRemoveElementsButton() {
@@ -24,11 +30,20 @@ public class HomePage {
         return driver.findElement(By.linkText("File Upload"));
     }
 
+    public WebElement getFileDownloadButton() {
+        return driver.findElement(By.linkText("File Download"));
+    }
+
+    //---------------
+
     public void clickOnAddRemoveElementsButton() {
         getAddRemoveElementsButton().click();
     }
 
     public void clickOnFileUploadButton() {
         getFileUploadButton().click();
+    }
+    public void clickOnFileDownloadButton() {
+        getFileDownloadButton().click();
     }
 }

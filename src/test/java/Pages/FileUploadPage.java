@@ -11,7 +11,6 @@ public class FileUploadPage {
     WebDriverWait wait;
     WebElement chooseFileButton;
     WebElement uploadButton;
-    WebElement dragDropUploadField;
 
     public FileUploadPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -26,19 +25,11 @@ public class FileUploadPage {
         return driver.findElement(By.id("file-submit"));
     }
 
-    /*public WebElement getDragDropUploadField() {
-        //return driver.findElement(By.id("drag-drop-upload"));
-        return driver.findElement(By.cssSelector(".dz-success-mark.dz-clickable"));
-    }*/
+    //-------------------
 
     public void uploadFileWithChooseFileButton(String location) {
         getChooseFileButton().sendKeys(location);
         getUploadButton().click();
     }
-
-    /*public void uploadFileWithDragDropField(String location) {
-        getDragDropUploadField().sendKeys(location);
-        getUploadButton().click();
-    }*/
 
 }

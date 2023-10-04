@@ -1,9 +1,6 @@
 package Base;
 
-import Pages.AddRemoveElementsPage;
-import Pages.FileUploadPage;
-import Pages.FileUploadedPage;
-import Pages.HomePage;
+import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,18 +18,19 @@ public class BaseTest {
     public AddRemoveElementsPage addRemoveElementsPage;
     public FileUploadPage fileUploadPage;
     public FileUploadedPage fileUploadedPage;
+    public FileDownloadPage fileDownloadPage;
 
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         homePage = new HomePage(driver, wait);
         addRemoveElementsPage = new AddRemoveElementsPage(driver, wait);
         fileUploadPage = new FileUploadPage(driver, wait);
         fileUploadedPage = new FileUploadedPage(driver, wait);
+        fileDownloadPage = new FileDownloadPage(driver, wait);
     }
 
     @AfterClass

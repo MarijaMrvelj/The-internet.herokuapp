@@ -9,6 +9,7 @@ public class AvailableExamplesTest extends BaseTest {
 
     @BeforeMethod
     public void pageSetUp() {
+        driver.manage().window().maximize();
         driver.navigate().to("https://the-internet.herokuapp.com/");
     }
 
@@ -47,49 +48,76 @@ public class AvailableExamplesTest extends BaseTest {
 
     @Test
     public void verifyThatImageCanBeUploaded() {
+        String fileName = "meme.jpg";
         homePage.clickOnFileUploadButton();
-        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\meme.jpg");
+        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\" + fileName);
 
         Assert.assertTrue(fileUploadedPage.getMessage().isDisplayed());
-        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), "meme.jpg");
+        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), fileName);
+
+        driver.navigate().to(homePage.getHomePageUrl());
+        homePage.clickOnFileDownloadButton();
+        Assert.assertTrue(fileDownloadPage.getFile(fileName).isDisplayed());
     }
 
     @Test
     public void verifyThatPdfFileCanBeUploaded() {
+        String fileName = "SQL2.pdf";
         homePage.clickOnFileUploadButton();
-        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\SQL2.pdf");
+        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\" + fileName);
 
         Assert.assertTrue(fileUploadedPage.getMessage().isDisplayed());
-        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), "SQL2.pdf");
+        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), fileName);
+
+        driver.navigate().to(homePage.getHomePageUrl());
+        homePage.clickOnFileDownloadButton();
+        Assert.assertTrue(fileDownloadPage.getFile(fileName).isDisplayed());
     }
 
     @Test
     public void verifyThatWordDocumentCanBeUploaded() {
+        String fileName = "Testiranje.docx";
         homePage.clickOnFileUploadButton();
-        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\Testiranje.docx");
+        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\" + fileName);
 
         Assert.assertTrue(fileUploadedPage.getMessage().isDisplayed());
-        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), "Testiranje.docx");
+        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), fileName);
+
+        driver.navigate().to(homePage.getHomePageUrl());
+        homePage.clickOnFileDownloadButton();
+        Assert.assertTrue(fileDownloadPage.getFile(fileName).isDisplayed());
     }
 
     @Test
     public void verifyThatTextDocumentCanBeUploaded() {
+        String fileName = "KodoviCas.txt";
         homePage.clickOnFileUploadButton();
-        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\KodoviCas.txt");
+        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\" + fileName);
 
         Assert.assertTrue(fileUploadedPage.getMessage().isDisplayed());
-        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), "KodoviCas.txt");
+        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), fileName);
+
+        driver.navigate().to(homePage.getHomePageUrl());
+        homePage.clickOnFileDownloadButton();
+        Assert.assertTrue(fileDownloadPage.getFile(fileName).isDisplayed());
     }
 
-
-    //Internal Server Error:
-    /*@Test
-    public void verifyThatImageCannotBeUploadedUsingDragDropField() throws InterruptedException {
+    @Test
+    public void verifyThatFileCanBeDownloaded() {
+        String fileName = "ocean.jpg";
         homePage.clickOnFileUploadButton();
-        Thread.sleep(2000);
-        fileUploadPage.uploadFileWithDragDropField("C:\\Users\\HP\\Desktop\\meme.jpg");
-        Assert.assertTrue(fileUploadedPage.getServerMessage().isDisplayed());
-        Assert.assertEquals(fileUploadedPage.getServerMessage().getText(), fileUploadedPage.serverMessageText());
-    }*/
+        fileUploadPage.uploadFileWithChooseFileButton("C:\\Users\\HP\\Desktop\\" + fileName);
+
+        Assert.assertTrue(fileUploadedPage.getMessage().isDisplayed());
+        Assert.assertEquals(fileUploadedPage.getUploadedFile().getText(), fileName);
+
+        driver.navigate().to(homePage.getHomePageUrl());
+        homePage.clickOnFileDownloadButton();
+        Assert.assertTrue(fileDownloadPage.getFile(fileName).isDisplayed());
+
+        fileDownloadPage.downloadFile(fileName);
+        Assert.assertTrue(fileDownloadPage.isFileDownloaded("C:\\Users\\HP\\Downloads\\", fileName));
+    }
+
 
 }
